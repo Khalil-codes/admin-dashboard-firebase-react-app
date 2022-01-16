@@ -1,3 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-
-export default configureStore({});
+import loginReducer from './loginSlice';
+export default configureStore({
+    reducer: { isAuthorized: loginReducer },
+});
