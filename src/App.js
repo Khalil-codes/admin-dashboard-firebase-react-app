@@ -1,15 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Home from './components/pages/dashboard/home/Home';
-import Users from './components/pages/dashboard/users/Users';
-import Orders from './components/pages/dashboard/orders/Orders';
-import Products from './components/pages/dashboard/products/Products';
-import Login from './components/pages/auth/login/Login';
-import Register from './components/pages/auth/register/Register';
 import './App.css';
-import Dashboard from './components/pages/dashboard/Dashboard';
-import Auth from './components/pages/auth/Auth';
+import Home from './pages/dashboard/home/Home';
+import Users from './pages/dashboard/users/Users';
+import Orders from './pages/dashboard/orders/Orders';
+import Products from './pages/dashboard/products/Products';
+import Login from './pages/auth/login/Login';
+import Register from './pages/auth/register/Register';
+import Dashboard from './pages/dashboard/Dashboard';
+import Auth from './pages/auth/Auth';
 
 function App() {
     return (

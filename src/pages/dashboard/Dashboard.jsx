@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux';
 import TopBar from './topbar/TopBar';
 import SideBar from './sidebar/SideBar';
 const Dashboard = () => {
-    const navigate = useNavigate();
     const isAuthorized = useSelector((state) => state.isAuthorized);
+    const navigate = useNavigate();
     useEffect(() => {
         if (isAuthorized) navigate('/');
         else navigate('/auth/login');

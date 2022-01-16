@@ -3,7 +3,7 @@ import './TopBar.css';
 
 import { Logout, Settings } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
-import { logoutUser } from '../../../../redux/loginSlice';
+import { logoutUser } from '../../../redux/loginSlice';
 
 const TopBar = () => {
     const dispatch = useDispatch();

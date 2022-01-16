@@ -17,10 +17,3 @@
 .register-container small {
     color: #616161;
 }
-.register-container button {
-    background-color: #007bff;
-    border: none;
-    padding: 10px 30px;
-    color: #fff;
-    border-radius: 5px;
-}
