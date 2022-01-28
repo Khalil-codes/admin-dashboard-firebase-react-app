@@ -1,17 +1,16 @@
-import React, { useEffect } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import React from 'react';
 import './Dashboard.css';
-import { useSelector } from 'react-redux';
+import { Navigate, Outlet } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
 import TopBar from './topbar/TopBar';
 import SideBar from './sidebar/SideBar';
+// import { useAuth } from '../../firebase';
+import { useSelector } from 'react-redux';
+
 const Dashboard = () => {
-    const isAuthorized = useSelector((state) => state.isAuthorized);
-    const navigate = useNavigate();
-    useEffect(() => {
-        if (isAuthorized) navigate('/');
-        else navigate('/auth/login');
-    }, [isAuthorized]);
-    return (
+    const currentUser = useSelector((state) => state.user.user);
+    // const currentUser = selectUser();
+    return currentUser ? (
         <>
             <TopBar />
             <div className="container">
@@ -19,6 +18,8 @@ const Dashboard = () => {
                 <Outlet />
             </div>
         </>
+    ) : (
+        <Navigate to="/auth/login" replace />
     );
 };
 

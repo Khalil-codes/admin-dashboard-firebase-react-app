@@ -20,6 +20,7 @@
 }
 .top-left {
     padding: 1.5px;
+    width: calc(100vw - 80%);
     flex: 1;
     height: 100%;
     display: flex;
@@ -31,11 +32,11 @@
     justify-content: space-between;
     align-items: center;
     padding-right: 20px;
-    flex: 4;
+    width: calc(100vw - 20%);
     gap: 20px;
 }
 .topbar-welcome-text {
-    padding-left: 10px;
+    padding-left: 20px;
     font-weight: 600;
     font-size: 1.4rem;
 }

@@ -1,6 +1,6 @@
 .home {
     background-color: #f4f6f9;
-    flex: 4;
+    width: calc(100vw - 20%);
     padding: 10px 0 10px 10px;
     display: flex;
     justify-content: center;

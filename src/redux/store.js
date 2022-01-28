@@ -1,5 +1,9 @@
-import { configureStore } from '@reduxjs/toolkit';
-import loginReducer from './loginSlice';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import authReducer from './authSlice';
+import productsReducer from './productsSlice';
 export default configureStore({
-    reducer: { isAuthorized: loginReducer },
+    reducer: { user: authReducer, products: productsReducer },
+    middleware: getDefaultMiddleware({
+        serializableCheck: false,
+    }),
 });

@@ -2,13 +2,16 @@ import React from 'react';
 import './TopBar.css';
 
 import { Logout, Settings } from '@mui/icons-material';
-import { useDispatch } from 'react-redux';
-import { logoutUser } from '../../../redux/loginSlice';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { auth, signOut } from '../../../firebase';
 
 const TopBar = () => {
-    const dispatch = useDispatch();
-    const logoutHandler = () => {
-        dispatch(logoutUser());
+    const navigate = useNavigate();
+    const currentUser = useSelector((state) => state.user.user);
+    const logoutHandler = async () => {
+        await signOut(auth);
+        navigate('./auth/login');
     };
     return (
         <div className="topbar">
@@ -17,7 +20,9 @@ const TopBar = () => {
                     <span className="logo">Adminy</span>
                 </div>
                 <div className="top-right">
-                    <div className="topbar-welcome-text">Welcome, Khalil</div>
+                    <div className="topbar-welcome-text">
+                        Welcome, {currentUser?.email}
+                    </div>
                     <div className="topbar-icons-container">
                         <div className="topbar-icon-container">
                             <Settings className="topbar-icon" />

@@ -1,17 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import {
+    Dashboard,
+    Home,
+    Users,
+    Products,
+    Orders,
+    Auth,
+    Login,
+    Register,
+    ForgotPassword,
+    UserProfile,
+} from './pages';
+import { onAuthStateChanged } from 'firebase/auth';
+import { useDispatch } from 'react-redux';
+import { saveUser, removeUser } from './redux/authSlice';
 import './App.css';
-import Home from './pages/dashboard/home/Home';
-import Users from './pages/dashboard/users/Users';
-import Orders from './pages/dashboard/orders/Orders';
-import Products from './pages/dashboard/products/Products';
-import Login from './pages/auth/login/Login';
-import Register from './pages/auth/register/Register';
-import Dashboard from './pages/dashboard/Dashboard';
-import Auth from './pages/auth/Auth';
+import { auth } from './firebase';
 
 function App() {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        onAuthStateChanged(auth, (userAuth) => {
+            if (userAuth) {
+                dispatch(
+                    saveUser({
+                        email: userAuth.email,
+                        uid: userAuth.uid,
+                        displayName: userAuth.displayName,
+                        photoUrl: userAuth.photoURL,
+                    })
+                );
+            } else {
+                dispatch(removeUser());
+            }
+        });
+    }, [dispatch]);
     return (
         <Router>
             <Routes>
@@ -20,10 +44,15 @@ function App() {
                     <Route path="users" element={<Users />} />
                     <Route path="products" element={<Products />} />
                     <Route path="orders" element={<Orders />} />
+                    <Route path="profile" element={<UserProfile />} />
                 </Route>
                 <Route path="auth" element={<Auth />}>
                     <Route index path="login" element={<Login />} />
                     <Route path="register" element={<Register />} />
+                    <Route
+                        path="forgot_password"
+                        element={<ForgotPassword />}
+                    />
                 </Route>
             </Routes>
         </Router>

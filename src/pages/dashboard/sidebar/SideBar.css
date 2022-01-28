@@ -1,8 +1,8 @@
 .sidebar {
-    flex: 1;
-    height: calc(100vh - 70px);
+    width: calc(100vw - 80%);
     position: sticky;
-    top: 50px;
+    top: 0;
+    z-index: 3;
     background-color: #343a40;
 }
 .sidebar-wrapper {
@@ -21,11 +21,13 @@
     padding-bottom: 3px;
     margin-bottom: 10px;
 }
-.sidebar-list {
+.sidebar-list,
+.user-profile-wrapper {
     list-style: none;
     padding: 5px;
 }
-.sidebar-list-item {
+.sidebar-list-item,
+.user-profile {
     margin-bottom: 5px;
     padding: 10px;
     cursor: pointer;
@@ -36,10 +38,20 @@
     color: #fff;
     text-decoration: none;
 }
-.sidebar-list-item:hover {
+.user-profile {
+    font-size: 1.3rem;
+    padding: 15px;
+}
+.user-profile img {
+    width: 40px;
+    height: 40px;
+}
+.sidebar-list-item:hover,
+.user-profile {
     background-color: rgba(255, 255, 255, 0.1);
 }
-.sidebar-list-item.active {
+.sidebar-list-item.active,
+.user-profile.active {
     background-color: #007bff;
     color: #fff;
 }
